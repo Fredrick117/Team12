@@ -10,6 +10,8 @@ public class HandPresence : MonoBehaviour
     private Animator handAnimator;
     private InputDevice targetDevice;
     public InputDeviceCharacteristics controllerCharacteristics;
+    public Camera VRCamera;
+    private Animator CamAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class HandPresence : MonoBehaviour
         List<InputDevice> devices = new List<InputDevice>();
         InputDevices.GetDevices(devices);
         InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
-
+        CamAnim = VRCamera.GetComponent<Animator>();
         if(devices.Count > 0)
         {
             targetDevice = devices[0];
@@ -48,6 +50,15 @@ public class HandPresence : MonoBehaviour
         else
         {
             handAnimator.SetFloat("Grip", 0);
+        }
+
+        if(targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryValue))
+        {
+            CamAnim.SetBool("Zoom", primaryValue);
+        }
+        else
+        {
+            CamAnim.SetBool("Zoom", false);
         }
     }
     // Update is called once per frame
