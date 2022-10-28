@@ -11,7 +11,7 @@ public class ContinuosMovement : MonoBehaviour
     public XRNode inputSource;
     private Vector2 inputAxis;
     private CharacterController characterController;
-    public float movSpeed = 10f;
+    public float movSpeed = 5f;
     private XROrigin rig;
 
     // Start is called before the first frame update
