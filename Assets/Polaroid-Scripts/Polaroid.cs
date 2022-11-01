@@ -32,9 +32,9 @@ public class Polaroid : MonoBehaviour
     {
         Photo newPhoto = CreatePhoto();
         SetPhotoImage(newPhoto);
-    }
+    }*/
 
-    private Photo CreatePhoto()
+    /*private Photo CreatePhoto()
     {
         GameObject photoObject = Instantiate(photoPrefab, spawnLocation.position, spawnLocation.rotation, transform);
         return photoObject.GetComponent<Photo>();
