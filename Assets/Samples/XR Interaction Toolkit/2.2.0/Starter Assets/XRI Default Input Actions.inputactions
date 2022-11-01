@@ -1493,6 +1493,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Camera",
+            "id": "5705ef55-1b6e-4872-ae23-74afc7f1e61f",
+            "actions": [
+                {
+                    "name": "PressShutterButton",
+                    "type": "Button",
+                    "id": "5259f6be-3c42-48ea-a6d4-5be7f7f2c51d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b97eab9b-4818-4360-90fd-e2a5891e15c2",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressShutterButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -19,4 +19,9 @@ public class Movable : MonoBehaviour
         if (isMoving)
             transform.position = Vector3.MoveTowards(transform.position, endPos.position, speed * Time.deltaTime);
     }
+
+    private void Awake()
+    {
+        endPos = transform.GetChild(0);
+    }
 }
