@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
+    public InputActionReference shutterAction = null;
+
+    public GameObject go_rightHand;
+
     Camera cam;
     Plane[] cameraFrustum;
     Collider col;
@@ -14,21 +20,25 @@ public class Interactable : MonoBehaviour
 
     private bool isVisible = false;
 
+    // TODO: move this somewhere else!
     [SerializeField]
-    private bool lowShutterSpeed = false;
+    private bool lowShutterSpeed = true;
+
+    private void Awake()
+    {
+        shutterAction.action.performed += PressShutterButton;
+        shutterAction.action.canceled += ReleaseShutterButton;
+    }
 
     private void Start()
     {
-        foreach(Camera c in Camera.allCameras)
-        {
-            if (c.name == "Camera")
-                cam = c;
-        }
+        cam = GameObject.Find("viewFinder").GetComponent<Camera>();
         col = GetComponent<Collider>();
     }
 
     private void Update()
     {
+
         // Change shutter speed
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -48,16 +58,6 @@ public class Interactable : MonoBehaviour
 
         if (isVisible && lowShutterSpeed)
         {
-            // TODO: isVisible
-            // TODO: replace with VR trigger action
-            if (Input.GetMouseButtonDown(0))
-            {
-                timeStamp = Time.time + interval;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                timeStamp = Mathf.Infinity;
-            }
             if (Time.time >= timeStamp)
             {
                 SpawnObject();
@@ -78,5 +78,15 @@ public class Interactable : MonoBehaviour
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         obj.transform.position = transform.position;
+    }
+
+    public void PressShutterButton(InputAction.CallbackContext context)
+    {
+        timeStamp = Time.time + interval;
+    }
+
+    public void ReleaseShutterButton(InputAction.CallbackContext context)
+    {
+        timeStamp = Mathf.Infinity;
     }
 }
