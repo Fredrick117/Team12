@@ -12,7 +12,6 @@ public class DollyZoom : MonoBehaviour
 
     private Camera camera;
     public Transform target;
-    [SerializeField] private Transform parentCam;
     float min;
 
     private float initFrusHeight;
@@ -37,18 +36,17 @@ public class DollyZoom : MonoBehaviour
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);
         initFrusHeight = ComputeFrustumHeight(distanceFromTarget);
 
-        min = parentCam.transform.position.z;
     }
 
     // Update is called once per frame            -
     void Update()
     {
 
-        Debug.Log("Trying to zoom");
+        //Debug.Log("Trying to zoom");
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
 
-        Debug.Log(inputAxis.y);
+        //Debug.Log(inputAxis.y);
 
         Mathf.Clamp(transform.position.z, 0, 100f);
 
@@ -64,10 +62,6 @@ public class DollyZoom : MonoBehaviour
 
         float currentDis = Vector3.Distance(transform.position, target.position);
         camera.fieldOfView = ComputeFieldofView(initFrusHeight, currentDis);
-        Debug.Log("Zoomed");
+        //Debug.Log("Zoomed");
     }
 }
-/*
- * get the camera body position
- * if the actual camera position < camera body position
- */
