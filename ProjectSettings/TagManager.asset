@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Volatile
+<<<<<<< Updated upstream
   - UIText
+=======
+  - Fan
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
