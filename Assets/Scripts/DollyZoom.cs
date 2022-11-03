@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 public class DollyZoom : MonoBehaviour
 {
+
     public XRNode inputSource;
     private Vector2 inputAxis;
     private float zoomSpeed = 10f;
 
-    private Camera camera;
+    [HideInInspector]
+    public Camera camera;
     public Transform target;
     float min;
 
     private float initFrusHeight;
+
+    [SerializeField] private TextMeshProUGUI zoomNumber;
 
     private float ComputeFrustumHeight(float distance)
     {
@@ -53,12 +58,18 @@ public class DollyZoom : MonoBehaviour
         if(inputAxis.y < 0 && transform.position.z > 0)
         {
             transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed, Space.Self);
+            int zoomVal = Mathf.RoundToInt(transform.position.z);
+            zoomNumber.text = zoomVal.ToString();
         }
 
         if(inputAxis.y > 0)
         {
             transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed, Space.Self);
+            int zoomVal = Mathf.RoundToInt(transform.position.z);
+            zoomNumber.text = zoomVal.ToString();
         }
+
+        
 
         float currentDis = Vector3.Distance(transform.position, target.position);
         camera.fieldOfView = ComputeFieldofView(initFrusHeight, currentDis);

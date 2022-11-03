@@ -5,7 +5,8 @@ public class Polaroid : MonoBehaviour
     //public GameObject photoPrefab = null;
     public MeshRenderer screenRenderer = null;
     //public Transform spawnLocation = null;
-
+    [HideInInspector]
+    public bool isCamOn;
     private Camera renderCamera = null;
 
     private void Awake()
@@ -62,11 +63,13 @@ public class Polaroid : MonoBehaviour
     {
         renderCamera.enabled = true;
         screenRenderer.material.color = Color.white;
+        isCamOn = true;
     }
 
     public void TurnOff()
     {
         renderCamera.enabled = false;
         screenRenderer.material.color = Color.black;
+        isCamOn = false;
     }
 }
