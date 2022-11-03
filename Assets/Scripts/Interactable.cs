@@ -69,7 +69,17 @@ public class Interactable : MonoBehaviour
         cameraFrustum = GeometryUtility.CalculateFrustumPlanes(cam);
         if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds))
         {
-            isVisible = true;
+            RaycastHit hit;
+
+            Vector3 direction = col.transform.position - cam.transform.position;
+            if (Physics.Raycast(cam.transform.position, direction, out hit))
+            {
+                if (hit.collider && GameObject.ReferenceEquals(hit.collider.gameObject, gameObject))
+                {
+                    // If the object is within the camera's view frustum AND is not blocked by any other object, it is visible
+                    isVisible = true;
+                }
+            }
         }
         else
         {
