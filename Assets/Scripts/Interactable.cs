@@ -8,6 +8,7 @@ using TMPro;
 
 public class Interactable : MonoBehaviour
 {
+
     public InputActionReference shutterAction = null;
     public InputActionProperty lowerShutterSpeed;
     public InputActionProperty increaseShutterSpeed;
@@ -28,7 +29,7 @@ public class Interactable : MonoBehaviour
     private bool isVisible = false;
 
     // TODO: move this somewhere else!
-    private bool isShutterSpeedLow;
+    public bool isShutterSpeedLow;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class Interactable : MonoBehaviour
         isShutterSpeedLow = true;
         lowShutterSpeedUI.enabled = true;
         highShutterSpeedUI.enabled = false;
+
     }
 
     private void Update()
@@ -86,6 +88,7 @@ public class Interactable : MonoBehaviour
             isVisible = false;
         }
 
+        //if the object is visible in camera and shutter speed is set to low
         if (isVisible && isShutterSpeedLow)
         {
             if (Time.time >= timeStamp)
@@ -94,12 +97,12 @@ public class Interactable : MonoBehaviour
                 timeStamp = Time.time + interval;
             }
         }
-        else if (isVisible && isShutterSpeedLow == false)
+        else if (isVisible && isShutterSpeedLow == false) // ---"--- and shutter speed is set to high
         {
             if (shutterAction.action.IsPressed())
             {
-                // TODO: Freeze object for a few seconds, not permanently
-                GetComponent<Movable>().isMoving = false;
+                    // TODO: Freeze object for a few seconds, not permanently
+                    GetComponent<Movable>().isMoving = false;  
             }
         }
     }
