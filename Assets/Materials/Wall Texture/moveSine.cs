@@ -9,6 +9,7 @@ public class moveSine : MonoBehaviour
     private float timer;
     private float offset;
     public bool isNegative;
+    public float negative=1;
    
     void Start()
     {
@@ -28,6 +29,6 @@ public class moveSine : MonoBehaviour
             offset = Mathf.Sin(timer) * offsetSpeed;
         }
 
-        this.transform.position += new Vector3(0,0,offset);
+        this.transform.position += new Vector3(0,0,offset*negative);
     }
 }
