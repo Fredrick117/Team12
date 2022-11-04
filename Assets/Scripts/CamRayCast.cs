@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class CamRayCast : MonoBehaviour
 {
-    private RaycastHit hit;
-    private bool onTarget = false;
-    [SerializeField] private InputActionProperty captureAction;
-    private Transform target;
-    private float ogScale;
-    private Vector3 targetScale;
+    private Interactable interactable;
 
-    private float ogDistance;
+    private RaycastHit hit;
+    private bool isFanVisible;
+
+    private GameObject Fan;
+    private Animator fanAnim;
+
+    [SerializeField] private TextMeshProUGUI lowShutterSpeedText;
+    [SerializeField] private TextMeshProUGUI highShutterSpeedText;
+
+    [SerializeField] private InputActionProperty capture;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,47 +29,31 @@ public class CamRayCast : MonoBehaviour
     void Update()
     {
         RayCast();
-        Capture();
     }
 
     void RayCast()
     {
         if(Physics.Raycast(transform.position, transform.forward, out hit, 1000))
         {
-            if(hit.collider.gameObject.CompareTag("Volatile"))
+            if(hit.collider.gameObject.tag == "Fan")
             {
                 Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
-                onTarget = true;
-                target = hit.transform;
-                ogDistance = Vector3.Distance(transform.position, target.position);
-                ogScale = target.localScale.x;
-                targetScale = target.localScale;
-                Debug.Log("Sphere milgaya");
+                isFanVisible = true;
+                Fan = hit.collider.gameObject;
+                fanAnim = Fan.GetComponent<Animator>();
+                Debug.Log("Fan milgaya");
             }
             else
             {
+                isFanVisible=false;
                 Debug.DrawRay(transform.position, transform.forward, Color.yellow, 10);
-                onTarget = false;
-                target = null;
             }
+        }
+
+        if(capture.action.IsPressed() && isFanVisible && highShutterSpeedText.enabled == true)
+        {
+            fanAnim.enabled = false;
         }
         
-    }
-
-    void Capture()
-    {
-        float capAction = captureAction.action.ReadValue<float>();
-        RaycastHit hit2;
-        if(onTarget && capAction != 0 && target != null)
-        {
-            if(Physics.Raycast(transform.position, transform.forward, out hit2, Mathf.Infinity))
-            {
-                float currDistance = Vector3.Distance(transform.position, target.position);
-                float s = currDistance / ogDistance;
-                targetScale.x = targetScale.y = targetScale.z = s;
-
-                target.transform.localScale = targetScale * ogScale;
-            }
-        }
     }
 }
