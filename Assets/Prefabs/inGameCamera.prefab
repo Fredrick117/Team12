@@ -225,7 +225,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 5519120507916741464}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
@@ -572,10 +572,10 @@ MonoBehaviour:
   capture:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Capture
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 37e0913f-ca94-4556-8e89-5b330ad92ed4
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
