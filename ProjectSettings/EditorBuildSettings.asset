@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Spawn Apartment.unity
+    path: Assets/Scenes/1.unity
     guid: f74e376edec8eeb45a1fe3fa4c837607
   - enabled: 1
-    path: Assets/Scenes/LI'AND MASSONS SCENE.unity
+    path: Assets/Scenes/2.unity
     guid: 5e5a9acc525c659478c80150a9586b50
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8ea61138250d0364791adc8faa949abd,
