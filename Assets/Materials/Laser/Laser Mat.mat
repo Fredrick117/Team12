@@ -118,16 +118,16 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0.224
+    - _DissolveAmount: 0.229
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseAmount: 0.174
+    - _NoiseAmount: 0.275
     - _NoisePower: 2
-    - _NoiseScale: 25
+    - _NoiseScale: 27.69
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -142,7 +142,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.9433962, g: 0, b: 0, a: 1}
-    - _Color: {r: 2.1185474, g: 2.1185474, b: 2.1185474, a: 0}
+    - _Color: {r: 4.237095, g: 4.237095, b: 4.237095, a: 0}
     - _EmissionColor: {r: 16, g: 0, b: 0, a: 1}
     - _MainSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - _NoiseSpeed: {r: -1, g: 0, b: 0, a: 0}
