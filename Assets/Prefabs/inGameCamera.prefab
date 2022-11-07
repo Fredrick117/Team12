@@ -342,7 +342,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 100
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -570,14 +570,15 @@ MonoBehaviour:
   lowShutterSpeedText: {fileID: 0}
   highShutterSpeedText: {fileID: 0}
   capture:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Capture
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 37e0913f-ca94-4556-8e89-5b330ad92ed4
+      m_Id: c362e25c-65fe-4f28-9e46-de35c7f462a7
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}

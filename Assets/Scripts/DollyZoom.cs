@@ -11,6 +11,9 @@ public class DollyZoom : MonoBehaviour
     public XRNode inputSource;
     private Vector2 inputAxis;
     private float zoomSpeed = 10f;
+    private float initStartZ;
+    private int zoomVal;
+    private Transform myTransform;
 
     [HideInInspector]
     public Camera camera;
@@ -34,13 +37,15 @@ public class DollyZoom : MonoBehaviour
     private void Awake()
     {
         camera = GetComponent<Camera>();
+        myTransform = transform;
     }
     // Start is called before the first frame update
     void Start()
     {
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);
         initFrusHeight = ComputeFrustumHeight(distanceFromTarget);
-
+        initStartZ = transform.position.z;
+        zoomNumber.text = "0";
     }
 
     // Update is called once per frame            -
@@ -55,17 +60,21 @@ public class DollyZoom : MonoBehaviour
 
         Mathf.Clamp(transform.position.z, 0, 100f);
 
-        if(inputAxis.y < 0 && transform.position.z > 0)
+        if(inputAxis.y < 0 && transform.localPosition.z > 0)
         {
-            transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed, Space.Self);
-            int zoomVal = Mathf.RoundToInt(transform.position.z);
+            transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed);
+            //Debug.Log(transform.gameObject.name);
+            //Debug.Log(myTransform.position.z);
+            zoomVal = Mathf.RoundToInt(transform.localPosition.z);
             zoomNumber.text = zoomVal.ToString();
         }
 
         if(inputAxis.y > 0)
         {
-            transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed, Space.Self);
-            int zoomVal = Mathf.RoundToInt(transform.position.z);
+            transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed);
+            //Debug.Log(transform.gameObject.name);
+            //Debug.Log(myTransform.localPosition);
+            zoomVal = Mathf.RoundToInt(transform.localPosition.z);
             zoomNumber.text = zoomVal.ToString();
         }
 

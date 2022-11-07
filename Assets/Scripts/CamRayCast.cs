@@ -41,7 +41,7 @@ public class CamRayCast : MonoBehaviour
                 isFanVisible = true;
                 Fan = hit.collider.gameObject;
                 fanAnim = Fan.GetComponent<Animator>();
-                Debug.Log("Fan milgaya");
+                Debug.Log(Fan.gameObject.name + " milgaya");
             }
             else
             {
@@ -52,7 +52,10 @@ public class CamRayCast : MonoBehaviour
 
         if(capture.action.IsPressed() && isFanVisible && highShutterSpeedText.enabled == true)
         {
+            Debug.Log(capture.action.IsPressed());
             fanAnim.enabled = false;
+            //new WaitForSeconds(5);
+            //fanAnim.enabled = true;
         }
         
     }
