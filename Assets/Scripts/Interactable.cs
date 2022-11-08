@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private TextMeshProUGUI highShutterSpeedUI;
 
     public GameObject go_rightHand;
-    public GameObject this_mesh;
+
     Camera cam;
     Plane[] cameraFrustum;
     Collider col;
@@ -109,7 +109,9 @@ public class Interactable : MonoBehaviour
 
     private void SpawnObject()
     {
-        Instantiate(this_mesh, this.transform.position, Quaternion.identity);
+        GameObject copy = Instantiate(gameObject, this.transform.position, Quaternion.identity);
+        Destroy(copy.GetComponent<Interactable>());
+        Destroy(copy.GetComponent<Movable>());
         
         //obj.transform.position = transform.position;
     }
