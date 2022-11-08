@@ -74,29 +74,39 @@ public class CamRayCast : MonoBehaviour
             {
                 Debug.Log(capture.action.IsPressed());
                 fanAnim.enabled = false;
-                Invoke("ResetObj", 3f);
+                StartCoroutine(ResetFan(5f, fanAnim));
             }
             else if(isArmVisible)
             {
                 arm.GetComponent<ArmMovement>().enabled = false;
-                Invoke("ResetObj", 3f);
+                StartCoroutine(ResetArm(5f, arm));
             }
             
         }
         
     }
 
-    //Fan and arm move again
-    private void ResetObj()
+    //Fan rotates again
+    IEnumerator ResetFan(float delay, Animator fan)
     {
-        Debug.Log("Resetting");
-        if(fanAnim.enabled == false)
+        yield return new WaitForSeconds(delay);
+        
+        if(fan.enabled == false)
         {
-            fanAnim.enabled = true;
+            Debug.Log("Resetting fan");
+            fan.enabled = true;
         }
-        else if(arm.GetComponent<ArmMovement>().enabled == false)
+    }
+
+    //Arm moves again
+    IEnumerator ResetArm(float delay, GameObject arm)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (arm.GetComponent<ArmMovement>().enabled == false)
         {
+            Debug.Log("Restting arm");
             arm.GetComponent<ArmMovement>().enabled = true;
         }
-    }   
+    }
 }
