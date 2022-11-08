@@ -2595,7 +2595,7 @@ MonoBehaviour:
   lowShutterSpeedUI: {fileID: 1210931299}
   highShutterSpeedUI: {fileID: 1210931297}
   go_rightHand: {fileID: 1583440865}
-  isShutterSpeedLow: 0
+  isShutterSpeedLow: 1
 --- !u!1001 &112741360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30192,6 +30192,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1, y: 2.1, z: 2.1}
   m_Center: {x: 0, y: -0.04, z: 0}
+--- !u!114 &1152531461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152531458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1bad54ddb56a144be7ab13e9c5425f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shutterAction: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  lowerShutterSpeed:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Lower Shutter Speed
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: e4e3af85-ff2b-4231-8aa0-b0ed488a7795
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -458176878133371787, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  increaseShutterSpeed:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Increase Shutter Speed
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 86e23000-559c-4ab8-9d6d-5f7442b734c3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5000220885091112420, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  lowShutterSpeedUI: {fileID: 1210931299}
+  highShutterSpeedUI: {fileID: 1210931297}
+  go_rightHand: {fileID: 1583440865}
+  isShutterSpeedLow: 1
 --- !u!1001 &1161347296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33754,7 +33798,7 @@ Transform:
   m_GameObject: {fileID: 1267939767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.49, z: -75.54}
-  m_LocalScale: {x: 8.603, y: 1, z: 22.492126}
+  m_LocalScale: {x: 8.603, y: 1, z: 20.432747}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 939867456}
