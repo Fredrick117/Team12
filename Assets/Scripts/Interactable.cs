@@ -112,6 +112,7 @@ public class Interactable : MonoBehaviour
         GameObject copy = Instantiate(gameObject, this.transform.position, Quaternion.identity);
         Destroy(copy.GetComponent<Interactable>());
         Destroy(copy.GetComponent<Movable>());
+        copy.layer = gameObject.layer;
         if (copy.GetComponent<Movable>() != null)
             Destroy(copy.GetComponent<Movable>());
         if (copy.GetComponent<objectMove>() != null)

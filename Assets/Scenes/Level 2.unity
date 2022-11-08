@@ -10949,7 +10949,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2496749570573828932, guid: 0735fbe8e11761147958287bca782846, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0735fbe8e11761147958287bca782846, type: 3}
 --- !u!1 &557692719 stripped
 GameObject:
@@ -52277,8 +52278,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.32254392, y: 0.38298485, z: 0.077676535}
-  m_Center: {x: -0.6299103, y: 0.047032777, z: 0.17417313}
+  m_Size: {x: 0.32254392, y: 0.3774693, z: 0.07767628}
+  m_Center: {x: -0.62990445, y: 0.049790617, z: 0.17417438}
 --- !u!1 &919132148597981085
 GameObject:
   m_ObjectHideFlags: 0
@@ -52917,7 +52918,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6284299661276800066}
   - component: {fileID: 5265429248924145785}
-  - component: {fileID: 6284299661276800067}
   m_Layer: 0
   m_Name: fan:Plane.002
   m_TagString: Fan
@@ -54204,19 +54204,6 @@ Transform:
   m_Father: {fileID: 7267583086849153556}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6284299661276800067
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3028573664588925421}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.33281586, y: 0.3445758, z: 0.029294597}
-  m_Center: {x: -0.6858186, y: 0.034859687, z: 0.1847014}
 --- !u!23 &6289776048668763763
 MeshRenderer:
   m_ObjectHideFlags: 0
