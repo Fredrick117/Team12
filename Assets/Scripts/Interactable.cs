@@ -117,6 +117,8 @@ public class Interactable : MonoBehaviour
         if (copy.GetComponent<objectMove>() != null)
             Destroy(copy.GetComponent<objectMove>());
 
+        copy.transform.rotation = gameObject.transform.rotation;
+
         //obj.transform.position = transform.position;
     }
 
