@@ -45,7 +45,7 @@ public class DollyZoom : MonoBehaviour
         float distanceFromTarget = Vector3.Distance(transform.position, target.position);
         initFrusHeight = ComputeFrustumHeight(distanceFromTarget);
         initStartZ = transform.position.z;
-        zoomNumber.text = "0";
+        zoomNumber.text = "1";
     }
 
     // Update is called once per frame            -
@@ -60,7 +60,7 @@ public class DollyZoom : MonoBehaviour
 
         Mathf.Clamp(transform.position.z, 0, 100f);
 
-        if(inputAxis.y < 0 && transform.localPosition.z > 0)
+        if(inputAxis.y < 0 && transform.localPosition.z > 1)
         {
             transform.Translate(inputAxis.y * Vector3.forward * Time.deltaTime * zoomSpeed);
             //Debug.Log(transform.gameObject.name);

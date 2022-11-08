@@ -8,6 +8,7 @@ TagManager:
   - UIText
   - Volatile
   - Reset
+  - Arm
   layers:
   - Default
   - TransparentFX

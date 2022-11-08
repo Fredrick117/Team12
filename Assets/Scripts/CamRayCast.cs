@@ -11,9 +11,12 @@ public class CamRayCast : MonoBehaviour
 
     private RaycastHit hit;
     private bool isFanVisible;
+    private bool isArmVisible;
 
     private GameObject Fan;
     private Animator fanAnim;
+
+    private GameObject arm;
 
     [SerializeField] private TextMeshProUGUI lowShutterSpeedText;
     [SerializeField] private TextMeshProUGUI highShutterSpeedText;
@@ -35,6 +38,7 @@ public class CamRayCast : MonoBehaviour
     {
         if(Physics.Raycast(transform.position, transform.forward, out hit, 1000))
         {
+            //if raycast hits fan
             if(hit.collider.gameObject.tag == "Fan")
             {
                 Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
@@ -48,15 +52,51 @@ public class CamRayCast : MonoBehaviour
                 isFanVisible=false;
                 Debug.DrawRay(transform.position, transform.forward, Color.yellow, 10);
             }
+
+            //if raycast hits moving arm
+            if (hit.collider.gameObject.tag == "Arm")
+            {
+                Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
+                isArmVisible = true;
+                arm = hit.collider.gameObject;
+                Debug.Log(arm.gameObject.name + " milgaya");
+            }
+            else
+            {
+                isArmVisible = false;
+                Debug.DrawRay(transform.position, transform.forward, Color.yellow, 10);
+            }
         }
 
-        if(capture.action.IsPressed() && isFanVisible && highShutterSpeedText.enabled == true)
+        if(capture.action.IsPressed() && highShutterSpeedText.enabled == true)
         {
-            Debug.Log(capture.action.IsPressed());
-            fanAnim.enabled = false;
-            //new WaitForSeconds(5);
-            //fanAnim.enabled = true;
+            if(isFanVisible)
+            {
+                Debug.Log(capture.action.IsPressed());
+                fanAnim.enabled = false;
+                Invoke("ResetObj", 3f);
+            }
+            else if(isArmVisible)
+            {
+                arm.GetComponent<ArmMovement>().enabled = false;
+                Invoke("ResetObj", 3f);
+            }
+            
         }
         
     }
+
+    //Fan and arm move again
+    private void ResetObj()
+    {
+        Debug.Log("Resetting");
+        if(fanAnim.enabled == false)
+        {
+            fanAnim.enabled = true;
+        }
+        else if(arm.GetComponent<ArmMovement>().enabled == false)
+        {
+            arm.GetComponent<ArmMovement>().enabled = true;
+        }
+    }   
 }
