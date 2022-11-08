@@ -12,33 +12,33 @@ public class door_open : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //start = this.transform.rotation.y;
+        start = this.transform.rotation.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //print(rotationAng);
-        /*if (isOpen)
+        print(rotationAng);
+        if (isOpen)
         {
-           
+
             if (this.transform.rotation.y >= rotationAng)
             {
-                
+
                 transform.Rotate(0, -speed, 0);
             }
 
         }
-        else 
+        else
         {
             if (this.transform.rotation.y <= start)
             {
                 transform.Rotate(0, speed, 0);
             }
 
-        }*/
+        }
 
-        
+
 
     }
 }
