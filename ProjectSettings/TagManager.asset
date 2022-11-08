@@ -9,6 +9,7 @@ TagManager:
   - Volatile
   - Reset
   - Arm
+  - ArmAttachment
   layers:
   - Default
   - TransparentFX
