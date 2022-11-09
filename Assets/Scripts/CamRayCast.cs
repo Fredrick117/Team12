@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Resources;
 
 public class CamRayCast : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class CamRayCast : MonoBehaviour
     private RaycastHit hit;
     private bool isFanVisible;
     private bool isArmVisible;
+    private bool isWallVisible;
 
     private GameObject Fan;
     private Animator fanAnim;
     private BoxCollider fanCollider;
+
+    private GameObject Wall;
+    private objectMove wallMoveScript;
 
     private GameObject arm;
 
@@ -42,47 +47,60 @@ public class CamRayCast : MonoBehaviour
             //if raycast hits fan
             if(hit.collider.gameObject.tag == "Fan")
             {
-                Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
                 isFanVisible = true;
                 Fan = hit.collider.gameObject;
                 fanCollider = Fan.GetComponent<BoxCollider>();
                 fanAnim = Fan.GetComponent<Animator>();
-                Debug.Log(Fan.gameObject.name + " milgaya");
+                //Debug.Log(Fan.gameObject.name + " milgaya");
             }
             else
             {
                 isFanVisible=false;
-                Debug.DrawRay(transform.position, transform.forward, Color.yellow, 10);
             }
 
             //if raycast hits moving arm
             if (hit.collider.gameObject.tag == "Arm")
             {
-                Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
                 isArmVisible = true;
                 arm = hit.collider.gameObject;
-                Debug.Log(arm.gameObject.name + " milgaya");
+                //Debug.Log(arm.gameObject.name + " milgaya");
             }
             else
             {
                 isArmVisible = false;
-                Debug.DrawRay(transform.position, transform.forward, Color.yellow, 10);
+            }
+
+            //if raycast hits wall
+            if(hit.collider.gameObject.tag == "Wall")
+            {
+                isWallVisible = true;
+                Wall = hit.collider.gameObject;
+                wallMoveScript = Wall.GetComponent<objectMove>();
+            }
+            else
+            {
+                isWallVisible = false;
             }
         }
 
         if(capture.action.IsPressed() && highShutterSpeedText.enabled == true)
         {
-            if(isFanVisible)
+            if (isFanVisible)
             {
-                Debug.Log(capture.action.IsPressed());
+                //Debug.Log(capture.action.IsPressed());
                 fanAnim.enabled = false;
                 fanCollider.enabled = false;
                 StartCoroutine(ResetFan(5f, fanAnim, fanCollider));
             }
-            else if(isArmVisible)
+            else if (isArmVisible)
             {
                 arm.GetComponent<ArmMovement>().enabled = false;
                 StartCoroutine(ResetArm(5f, arm));
+            }
+            else if(isWallVisible)
+            {
+                wallMoveScript.enabled = false;
+                StartCoroutine(ResetWall(5f, wallMoveScript));
             }
             
         }
@@ -96,7 +114,7 @@ public class CamRayCast : MonoBehaviour
         
         if(fan.enabled == false && fancollider.enabled == false)
         {
-            Debug.Log("Resetting fan");
+            //Debug.Log("Resetting fan");
             fan.enabled = true;
             fancollider.enabled = true; 
         }
@@ -109,8 +127,19 @@ public class CamRayCast : MonoBehaviour
 
         if (arm.GetComponent<ArmMovement>().enabled == false)
         {
-            Debug.Log("Restting arm");
+            //Debug.Log("Restting arm");
             arm.GetComponent<ArmMovement>().enabled = true;
+        }
+    }
+
+    //Wall moves again
+    IEnumerator ResetWall(float delay, objectMove wallmover)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if(wallmover.enabled == false)
+        {
+            wallmover.enabled = true;
         }
     }
 }
