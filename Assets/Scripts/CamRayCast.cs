@@ -15,6 +15,7 @@ public class CamRayCast : MonoBehaviour
 
     private GameObject Fan;
     private Animator fanAnim;
+    private BoxCollider fanCollider;
 
     private GameObject arm;
 
@@ -44,6 +45,7 @@ public class CamRayCast : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.forward, Color.red, 1);
                 isFanVisible = true;
                 Fan = hit.collider.gameObject;
+                fanCollider = Fan.GetComponent<BoxCollider>();
                 fanAnim = Fan.GetComponent<Animator>();
                 Debug.Log(Fan.gameObject.name + " milgaya");
             }
@@ -74,8 +76,8 @@ public class CamRayCast : MonoBehaviour
             {
                 Debug.Log(capture.action.IsPressed());
                 fanAnim.enabled = false;
-                Fan.GetComponent<BoxCollider>().enabled = false;
-                StartCoroutine(ResetFan(5f, fanAnim));
+                fanCollider.enabled = false;
+                StartCoroutine(ResetFan(5f, fanAnim, Fan));
             }
             else if(isArmVisible)
             {
@@ -88,14 +90,15 @@ public class CamRayCast : MonoBehaviour
     }
 
     //Fan rotates again
-    IEnumerator ResetFan(float delay, Animator fan)
+    IEnumerator ResetFan(float delay, Animator fan, BoxCollider fancollider)
     {
         yield return new WaitForSeconds(delay);
         
-        if(fan.enabled == false)
+        if(fan.enabled == false && fancollider.enabled == false)
         {
             Debug.Log("Resetting fan");
             fan.enabled = true;
+            fancollider.enabled = true;
         }
     }
 
