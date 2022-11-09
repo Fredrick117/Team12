@@ -10,6 +10,7 @@ TagManager:
   - Reset
   - Arm
   - ArmAttachment
+  - Wall
   layers:
   - Default
   - TransparentFX
