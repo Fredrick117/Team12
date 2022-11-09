@@ -77,7 +77,7 @@ public class CamRayCast : MonoBehaviour
                 Debug.Log(capture.action.IsPressed());
                 fanAnim.enabled = false;
                 fanCollider.enabled = false;
-                StartCoroutine(ResetFan(5f, fanAnim, Fan));
+                StartCoroutine(ResetFan(5f, fanAnim, fanCollider));
             }
             else if(isArmVisible)
             {
@@ -98,7 +98,7 @@ public class CamRayCast : MonoBehaviour
         {
             Debug.Log("Resetting fan");
             fan.enabled = true;
-            fancollider.enabled = true;
+            fancollider.enabled = true; 
         }
     }
 
