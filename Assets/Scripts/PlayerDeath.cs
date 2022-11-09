@@ -19,7 +19,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Fan")
+        if(collision.gameObject.tag == "Fan" || collision.gameObject.tag == "Wall")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
