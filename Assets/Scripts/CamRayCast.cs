@@ -74,6 +74,7 @@ public class CamRayCast : MonoBehaviour
             {
                 Debug.Log(capture.action.IsPressed());
                 fanAnim.enabled = false;
+                Fan.GetComponent<BoxCollider>().enabled = false;
                 StartCoroutine(ResetFan(5f, fanAnim));
             }
             else if(isArmVisible)
