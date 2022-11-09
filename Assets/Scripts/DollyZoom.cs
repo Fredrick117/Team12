@@ -10,7 +10,7 @@ public class DollyZoom : MonoBehaviour
 
     public XRNode inputSource;
     private Vector2 inputAxis;
-    private float zoomSpeed = 10f;
+    private float zoomSpeed = 50f;
     private float initStartZ;
     private int zoomVal;
     private Transform myTransform;
