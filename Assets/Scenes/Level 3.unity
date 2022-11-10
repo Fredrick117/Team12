@@ -19458,7 +19458,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 793878867}
     - target: {fileID: 5171926100567952103, guid: 8d1298a78c7bb34489750969a5aa2653,
         type: 3}
       propertyPath: m_Name
@@ -19656,6 +19656,28 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 626431912}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &626431916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5171926100646146965, guid: 8d1298a78c7bb34489750969a5aa2653,
+    type: 3}
+  m_PrefabInstance: {fileID: 626431912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &626431917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626431916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88f9a7675d10854e8f50ac90454f9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSource: 5
+  camera: {fileID: 0}
+  target: {fileID: 30106146}
+  zoomNumber: {fileID: 192564270}
 --- !u!1 &638412226
 GameObject:
   m_ObjectHideFlags: 0
@@ -23577,27 +23599,13 @@ GameObject:
   - component: {fileID: 812677904}
   - component: {fileID: 812677903}
   - component: {fileID: 812677902}
-  - component: {fileID: 812677901}
   m_Layer: 0
   m_Name: to_newScence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &812677901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812677900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653477e10e94d744baaf5fb95b9e240a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: 4
+  m_IsActive: 0
 --- !u!65 &812677902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30559,7 +30567,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2496749570573828932, guid: 0735fbe8e11761147958287bca782846, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0735fbe8e11761147958287bca782846, type: 3}
 --- !u!1 &1130040160
 GameObject:
