@@ -118,15 +118,15 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0.229
+    - _DissolveAmount: 0.288
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseAmount: 0.275
-    - _NoisePower: 2
+    - _NoiseAmount: 0.3
+    - _NoisePower: 2.21
     - _NoiseScale: 27.69
     - _OcclusionStrength: 1
     - _Parallax: 0.005

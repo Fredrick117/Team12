@@ -18,9 +18,9 @@ public class WallTrigger : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collider.gameObject.tag == "Player")
         {
             wall1.GetComponent<objectMove>().enabled = true;
             wall2.GetComponent<objectMove>().enabled = true;
