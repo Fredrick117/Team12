@@ -18,7 +18,7 @@ public class door_open : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(rotationAng);
+       
         if (isOpen)
         {
 
